@@ -1,17 +1,31 @@
 import getArticles from "@/sanity/sanity-utils";
+import Illustration from "@/public/engineer.svg";
+import Image from "next/image";
+import { Article } from "@/types/article";
+import ArticleGrid from "@/components/ArticleGrid";
 
-const Page: React.FC = async ({}) => {
-  const articles = await getArticles();
+const Hero: React.FC = async ({}) => {
+  const articles: Article[] = await getArticles();
   return (
-    <div>
-      <h1>Fotowoltaika Śliwson Sp.z.o.o</h1>
-      {articles.map((article) => (
-        <div key={article._id}>
-          <p className="text-2xl">{article.name}</p>
+    <>
+      <section className="px-4">
+        <div className="py-12 flex flex-col items-center gap-6">
+          <h1 className="text-3xl text-center font-bold leading-tight">
+            Tanie rozwiązania fotowoltaiczne w twojej okolicy
+          </h1>
+          <Image src={Illustration} alt="" width={400} height={280} />
         </div>
-      ))}
-    </div>
+      </section>
+      <section className="px-4 bg-slate-100 grow">
+        <div className="py-6 flex flex-col space-y-4">
+          <h2 className="text-3xl text-center font-semibold leading-tight">
+            Nasze artykuły
+          </h2>
+          <ArticleGrid articles={articles} />
+        </div>
+      </section>
+    </>
   );
 };
 
-export default Page;
+export default Hero;
