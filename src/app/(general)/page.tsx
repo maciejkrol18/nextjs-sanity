@@ -1,4 +1,4 @@
-import getArticles from "@/sanity/sanity-utils";
+import getAllArticles from "@/sanity/get-all-articles";
 import Illustration from "@/public/engineer.svg";
 import Image from "next/image";
 import { Article } from "@/types/article";
@@ -6,7 +6,7 @@ import ArticleGrid from "@/components/ArticleGrid";
 import MockContactForm from "@/components/MockContactForm";
 
 const Hero: React.FC = async ({}) => {
-  const articles: Article[] = await getArticles();
+  const articles: Article[] = await getAllArticles();
   return (
     <>
       <section className="px-4">

@@ -1,7 +1,7 @@
 import { Article } from "@/types/article";
 import { createClient, groq } from "next-sanity";
 
-const getArticles = async (): Promise<Article[]> => {
+const getArticle = async (slug: string): Promise<Article> => {
   const client = createClient({
     projectId: "ul3481p8",
     dataset: "production",
@@ -9,7 +9,7 @@ const getArticles = async (): Promise<Article[]> => {
   });
 
   return client.fetch(
-    groq`*[_type == "article"]{
+    groq`*[_type == "article" && slug.current == $slug][0]{
       _id,
       _createdAt,
       name,
@@ -18,7 +18,8 @@ const getArticles = async (): Promise<Article[]> => {
       url,
       content
     }`,
+    { slug },
   );
 };
 
-export default getArticles;
+export default getArticle;

@@ -7,7 +7,9 @@ const GeneralLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="flex items-center justify-between py-2">
           <div className="flex gap-2">
             <PlugZap className="text-slate-900 w-6 h-6" />
-            <p className="text-lg text-slate-800">Fotowoltaika Śliwson</p>
+            <a href="/" className="text-lg text-slate-800">
+              Fotowoltaika Śliwson
+            </a>
           </div>
           <div>
             <Menu className="text-slate-900 w-6 h-6" />
