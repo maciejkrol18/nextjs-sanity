@@ -1,35 +1,35 @@
 const article = {
   name: "article",
-  title: "Articles",
+  title: "Artykuły",
   type: "document",
   fields: [
     {
       name: "name",
-      title: "Name",
+      title: "Tytuł",
       type: "string",
     },
     {
       name: "slug",
-      title: "Slug",
+      title: "Slug (kliknij 'Generate')",
       type: "slug",
       options: { source: "name" },
     },
     {
       name: "image",
-      title: "Image",
+      title: "Obrazek",
       type: "image",
       options: { hotspot: true },
       fields: [
         {
           name: "alt",
-          title: "Alternative title",
+          title: "Opis obrazka",
           type: "string",
         },
       ],
     },
     {
       name: "content",
-      title: "Content",
+      title: "Treść",
       type: "array",
       // Sanity's way of doing 'rich text' (markdown in the studio)
       of: [{ type: "block" }],
