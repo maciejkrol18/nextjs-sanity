@@ -3,6 +3,7 @@ import Illustration from "@/public/engineer.svg";
 import Image from "next/image";
 import { Article } from "@/types/article";
 import ArticleGrid from "@/components/ArticleGrid";
+import MockContactForm from "@/components/MockContactForm";
 
 const Hero: React.FC = async ({}) => {
   const articles: Article[] = await getArticles();
@@ -30,7 +31,7 @@ const Hero: React.FC = async ({}) => {
         </div>
       </section>
       <section className="px-4 container mx-auto">
-        <div className="py-6 flex flex-col space-y-4">
+        <div className="py-6 flex flex-col items-center space-y-4">
           <div>
             <h3 className="text-3xl text-center text-slate-800 font-bold leading-tight">
               Skontaktuj się z nami
@@ -39,6 +40,7 @@ const Hero: React.FC = async ({}) => {
               Poniżej zostaw swoje dane kontaktowe a my z chęcią się z tobą skontaktujemy
             </p>
           </div>
+          <MockContactForm />
         </div>
       </section>
     </>

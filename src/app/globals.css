@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.form-label {
+  @apply block text-slate-800;
+}
+
+.form-input {
+  @apply block p-1 border-slate-400 border-[1px] rounded-md;
+}
+
+.form-error-msg {
+  @apply text-sm text-red-500 my-1 max-w-[263px];
+}
