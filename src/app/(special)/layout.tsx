@@ -1,3 +1,3 @@
-const AdminLayout = ({ children }: { children: React.ReactNode }) => children;
+const SpecialLayout = ({ children }: { children: React.ReactNode }) => children;
 
-export default AdminLayout;
+export default SpecialLayout;
