@@ -9,8 +9,9 @@ interface ArticlePageProps {
 const ArticlePage: React.FC<ArticlePageProps> = async ({ params }) => {
   const slug = params.slug;
   const article = await getArticle(slug as string);
-  console.log(article.image);
+  console.log(article);
   const datePosted = dayjs(article._createdAt).format("D MMMM YYYY [roku]");
+  const lastUpdate = dayjs(article._updatedAt).format("D MMMM YYYY [roku]");
   return (
     <>
       <div
@@ -27,6 +28,9 @@ const ArticlePage: React.FC<ArticlePageProps> = async ({ params }) => {
           <div className="my-2 text-center">
             <h1 className="text-slate-800 text-3xl font-black leading">{article.name}</h1>
             <p className="text-slate-700 font-light">Data utworzenia: {datePosted}</p>
+            <p className="text-slate-700 font-light">
+              Ostatnia aktualizacja: {lastUpdate}
+            </p>
           </div>
 
           <div className="text-slate-800 text-justify">
