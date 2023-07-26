@@ -1,6 +1,6 @@
 import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk"; // Required for viewing the studio
-import article from "./sanity/schemas/article-schema"; // Schema for the article
+import article from "@/sanity/schemas/article-schema"; // Schema for the article
 
 const config = defineConfig({
   projectId: "ul3481p8",

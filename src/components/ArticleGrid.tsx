@@ -10,12 +10,12 @@ interface ArticleGridProps {
 const ArticleGrid: React.FC<ArticleGridProps> = ({ articles }) => {
   dayjs.extend(relativeTime);
   return (
-    <div className="grid">
+    <div className="grid grid-cols-4">
       {articles.map((article) => {
         const timePassed = dayjs().from(dayjs(article._createdAt), true);
         return (
           <a href={`artykuly/${article.slug}`}>
-            <article className="bg-white rounded-md drop-shadow-sm p-4 flex flex-col justify-between">
+            <article className="bg-white rounded-md max-w-[343px] drop-shadow-sm p-4 flex flex-col justify-between">
               <Image
                 src={article.image}
                 alt={article.name}
