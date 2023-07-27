@@ -2,26 +2,39 @@
 
 import { ContactForm, ContactSchema } from "@/models/Contact";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { createClient } from "next-sanity";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 const MockContactForm: React.FC = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ContactForm>({
     resolver: zodResolver(ContactSchema),
   });
 
-  const onSubmit: SubmitHandler<ContactForm> = (data) => {
-    alert(`
-      Dane które wprowadziłeś\n
-      -----------------------\n
-      Imię i nazwisko: ${data.name}\n
-      Numer telefonu: ${data.phone}\n
-      Adres email: ${data.email}\n
-      Wiadomość: ${data.message ? data.message : "<brak>"}
-    `);
+  const client = createClient({
+    projectId: "ul3481p8",
+    dataset: "production",
+    apiVersion: "2023-07-24",
+    token: process.env.NEXT_PUBLIC_CONTACT_FORM_API_KEY,
+  });
+
+  const onSubmit: SubmitHandler<ContactForm> = async (data) => {
+    try {
+      await client.create({
+        _type: "contact",
+        name: data.name,
+        phone: data.phone,
+        email: data.email,
+        message: data.message,
+      });
+      reset();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
