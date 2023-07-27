@@ -9,7 +9,6 @@ interface ArticlePageProps {
 const ArticlePage: React.FC<ArticlePageProps> = async ({ params }) => {
   const slug = params.slug;
   const article = await getArticle(slug as string);
-  console.log(article);
   const datePosted = dayjs(article._createdAt).format("D MMMM YYYY [roku]");
   const lastUpdate = dayjs(article._updatedAt).format("D MMMM YYYY [roku]");
   return (
