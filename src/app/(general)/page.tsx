@@ -4,9 +4,13 @@ import Image from "next/image";
 import { Article } from "@/types/article";
 import ArticleGrid from "@/components/ArticleGrid";
 import MockContactForm from "@/components/MockContactForm";
+import { Partner } from "@/types/partner";
+import getAllPartners from "@/sanity/get-all-partners";
+import PartnersMarquee from "@/components/PartnersMarquee";
 
 const Hero: React.FC = async ({}) => {
   const articles: Article[] = await getAllArticles();
+  const partners: Partner[] = await getAllPartners();
   return (
     <>
       <section className="px-4">
@@ -17,12 +21,25 @@ const Hero: React.FC = async ({}) => {
           <Image src={Illustration} alt="" width={400} height={280} />
         </div>
       </section>
-      <section className="px-4 bg-slate-100 container mx-auto grow">
+      <section className="px-4 container mx-auto">
+        <div className="py-12 flex flex-col space-y-4">
+          <div>
+            <h2 className="text-3xl text-center text-slate-800 font-bold leading-tight">
+              Współpracujący partnerzy
+            </h2>
+            <p className="font-light text-center text-slate-700">
+              Firmy wraz z którymi dostarczamy usługi najwyższej jakości
+            </p>
+          </div>
+          <PartnersMarquee partners={partners} />
+        </div>
+      </section>
+      <section className="px-4 bg-slate-100 container mx-auto">
         <div className="py-6 flex flex-col space-y-4">
           <div>
-            <h2 className="text-3xl text-center font-bold leading-tight text-slate-800">
+            <h3 className="text-3xl text-center font-bold leading-tight text-slate-800">
               Aktualności
-            </h2>
+            </h3>
             <p className="font-light text-center text-slate-700">
               Nasze artykuły, informacje rynkowe i prognozy
             </p>
@@ -33,9 +50,9 @@ const Hero: React.FC = async ({}) => {
       <section className="px-4 container mx-auto">
         <div className="py-6 flex flex-col items-center space-y-4">
           <div>
-            <h3 className="text-3xl text-center text-slate-800 font-bold leading-tight">
+            <h4 className="text-3xl text-center text-slate-800 font-bold leading-tight">
               Skontaktuj się z nami
-            </h3>
+            </h4>
             <p className="font-light text-center text-slate-700">
               Poniżej zostaw swoje dane kontaktowe a my z chęcią się z tobą skontaktujemy
             </p>
